@@ -2,7 +2,7 @@
 from scripts.touxiang import gettop,top
 from scripts.input import puup
 import uuid 
-from scripts import qrcode,post
+from scripts import qrcode
 from scripts import post
 
 
