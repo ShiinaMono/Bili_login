@@ -12,7 +12,7 @@ class MyWindow(QWidget):
         # self.combo()
 
     def init_ui(self):
-        self.ui = uic.loadUi("./untitled.ui")
+        self.ui = uic.loadUi("./gui/untitled.ui")
         print(self.ui.__dict__)  # 查看ui文件中有哪些控件
 
         # layout = self.ui.verticalLayout
@@ -37,7 +37,7 @@ class MyWindow(QWidget):
 
     def indexchange(self,i) :
         s = self.cb.currentText()
-        print(s)
+        return s
 
 
 # def printf(self,ipip):

@@ -8,7 +8,19 @@ from MyQR import myqr
 from PIL import Image
 import matplotlib.pyplot as plt
 from urllib.parse import urlparse
-from ttt import imggg
+
+def imggg():
+    img = Image.open("./config/scanme.png")
+    plt.figure(figsize=(4,4))
+    plt.ion()
+    plt.axis('off')
+    plt.imshow(img)
+    mnmn = plt.get_current_fig_manager()
+    # mnmn.window.wm_geometry("+380+380")
+    plt.pause(15)
+    plt.ioff()
+    plt.clf()
+    plt.close()
 
 a = os.path.exists('./config')
 if a == False :
@@ -119,7 +131,6 @@ def main():
 #     print(result_text)
 
 
-if __name__ == "__main__":
-    # main()
-    uid,sessdata,bilijct=main()
+# if __name__ == "__main__":
+# main()
     # youxiang(sessdata)

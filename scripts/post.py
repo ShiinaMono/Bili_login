@@ -1,25 +1,21 @@
 import json
 from numbers import Number
-import uuid
 from socket import MsgFlag
 import requests
 import datetime
 import time
-from qrcode import main as qrmain
-from touxiang import gettop,top
-from input import puup
 # with open('config.json', mode='r') as config:
 #     conf = json.load(config)
 
-uuid = uuid.uuid1
-uid,sessdata,bilijct = qrmain()
-print(uid,sessdata,uuid)
-
-headers = {'Connection': 'close', 'User-Agent': 'Mozilla/5.0',
-           'Cookie': f'uid="{uid}";_uuid="{uuid}";SESSDATA="{sessdata}"'}
 
 
-def get():
+# headers = {
+#     'Connection': 'close', 'User-Agent': 'Mozilla/5.0',
+#     'Cookie': f'uid="{uid}";_uuid="{uuid}";SESSDATA="{sessdata}"'
+#     }
+
+
+def get(uid,headers):
 
     url = f'https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/space_history?visitor_uid={uid}&host_uid={uid}&need_top=1&offset_dynamic_id='
     try:
@@ -31,7 +27,7 @@ def get():
         print(e)
 
 
-def post(id):
+def post(id,headers):
     url = 'https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/rm_dynamic'
     try:
         resp = requests.post(
@@ -85,16 +81,13 @@ def clear(year, get, post):
             continue
 
 
-def main():
-    year = puup()
+def main(year,headers,uid):
     clear(year, get, post)
-    top()
 
-
-if __name__ == "__main__":
-    # uid = input("请输入uid：")
-    # uuid = input("请输入uuid：")
-    # sessdata = input("请输入SESSDATA：")
-    # year = input("请输入截止年份：")
-    # clear(year, get, post)
-    main()
+# if __name__ == "__main__":
+#     # uid = input("请输入uid：")
+#     # uuid = input("请输入uuid：")
+#     # sessdata = input("请输入SESSDATA：")
+#     # year = input("请输入截止年份：")
+#     # clear(year, get, post)
+#     main()
